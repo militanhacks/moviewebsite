@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Shadow Monarch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;600&display=swap');
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #030712;
+    }
+    
+    .monarch-font {
+      font-family: 'Cinzel', serif;
+    }
+
+    .shadow-glow {
+      text-shadow: 0 0 15px #a855f7, 0 0 30px #7e22ce;
+    }
+
+    .monarch-card {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      box-shadow: 0 0 25px rgba(126, 34, 206, 0.25);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+  <div class="monarch-card w-full max-w-md p-8 rounded-2xl relative overflow-hidden">
+    
+    <div class="text-center mb-8">
+      <span class="text-4xl block mb-2">⚡</span>
+      <h1 class="monarch-font text-2xl font-black text-purple-400 shadow-glow tracking-widest uppercase">
+        Shadow Monarch
+      </h1>
+      <p class="text-xs text-gray-400 mt-2 uppercase tracking-wider">Authentication Required</p>
+    </div>
+
+    <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-5">
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-purple-300 font-semibold mb-2">Username</label>
+        <input type="text" id="username" required placeholder="Enter username" class="w-full bg-black/50 border border-purple-900/60 focus:border-purple-500 text-white text-sm rounded-lg p-3 outline-none transition-all">
+      </div>
+
+      <div>
+        <label class="block text-xs uppercase tracking-wider text-purple-300 font-semibold mb-2">Password</label>
+        <input type="password" id="password" required placeholder="Enter password" class="w-full bg-black/50 border border-purple-900/60 focus:border-purple-500 text-white text-sm rounded-lg p-3 outline-none transition-all">
+      </div>
+
+      <p id="errorMsg" class="text-red-400 text-xs text-center hidden font-semibold">Access Denied: Invalid Credentials</p>
+
+      <button type="submit" class="w-full bg-purple-900/60 hover:bg-purple-600 border border-purple-500/50 text-white font-bold py-3 rounded-lg text-sm transition-all duration-200">
+        ARISE (ENTER DOMAIN)
+      </button>
+    </form>
+
+    <div class="text-center mt-6">
+      <a href="index.html" class="text-xs text-gray-500 hover:text-purple-400 transition-colors">← Return to Vault</a>
+    </div>
+
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault();
+      const user = document.getElementById('username').value;
+      const pass = document.getElementById('password').value;
+
+      if (user === "ADMIN" && pass === "ephymawira") {
+        window.location.href = "admin.html";
+      } else {
+        document.getElementById('errorMsg').classList.remove('hidden');
+      }
+    }
+  </script>
+
+</body>
+</html>
